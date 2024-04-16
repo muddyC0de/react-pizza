@@ -1,0 +1,117 @@
+@import "../variables";
+
+.pizza-block {
+  width: 280px;
+  text-align: center;
+  margin-bottom: 65px;
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 260px;
+    transition: transform 0.15s ease-in-out;
+    &:hover {
+      transform: translateY(5px);
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1%;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  &__description {
+    color: #656565;
+    text-align: left;
+    font-size: 15px;
+    height: 100px;
+    width: 100%;
+  }
+
+  &__selector {
+    display: flex;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 6px;
+
+    width: 400px;
+    margin-bottom: 20px;
+
+    ul {
+      display: flex;
+      position: relative;
+      flex: 1;
+
+      .toggle {
+        position: absolute;
+        width: 193px;
+        height: 35px;
+        background: #ffffff;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+        border-radius: 5px;
+        transition: transform 200ms ease-out 0s, width;
+        &.tradition {
+          transform: translateX(calc(100%));
+        }
+
+        &.thin {
+          transform: translateX(calc(0%));
+        }
+
+        &.small {
+          transform: translateX(calc(0%));
+          width: 128.67px;
+        }
+
+        &.average {
+          transform: translateX(calc(100%));
+          width: 128.67px;
+        }
+
+        &.large {
+          transform: translateX(calc(200%));
+          width: 128.67px;
+        }
+      }
+      &:first-of-type {
+        margin-bottom: 6px;
+      }
+
+      li {
+        text-align: center;
+        position: relative;
+        padding: 8px;
+        flex: 1;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        @include noselect();
+
+        &.active {
+          cursor: auto;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: 0.015em;
+  }
+}

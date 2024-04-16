@@ -1,0 +1,44 @@
+.root {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: 600;
+  :global {
+    .selected {
+      a {
+        color: #fff !important;
+      }
+      background-color: #fe5f1e;
+    }
+    .next,
+    .previous {
+      padding: 0;
+      height: 24px;
+      width: 24px;
+      position: absolute;
+      color: black !important;
+      background: none !important;
+    }
+    .next {
+      right: 740px;
+    }
+
+    .previous {
+      left: 740px;
+    }
+  }
+
+  li {
+    padding: 8px 15px 8px 15px;
+    margin-right: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    &:hover {
+      a {
+        color: #fe5f1e;
+      }
+    }
+  }
+}
