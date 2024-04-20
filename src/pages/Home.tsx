@@ -1,16 +1,14 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
-import Pagination from "../components/Pagination";
 import { RootState } from "../redux/store";
 import { CurrentSort } from "../redux/slices/filterSlice";
 import {
   setCurrentCategory,
   setCurrentSort,
-  setCurrentPage,
 } from "../redux/slices/filterSlice";
 import { fetchPizzas } from "../redux/slices/pizzaSlice";
 import { useAppDispatch } from "../redux/store";
@@ -24,9 +22,7 @@ const Home: React.FC = () => {
   const onChangeCategory = React.useCallback((id: number) => {
     dispatch(setCurrentCategory(id));
   }, []);
-  const onChangePage = (number: number) => {
-    dispatch(setCurrentPage(number));
-  };
+
   const onChangeSort = (sortType: CurrentSort) => {
     dispatch(setCurrentSort(sortType));
   };
@@ -49,7 +45,7 @@ const Home: React.FC = () => {
       window.scrollTo(0, 0);
     }
     fetchData();
-  }, [currentCategory, currentSort, searchValue, currentPage]);
+  }, [currentCategory, currentSort, searchValue]);
 
   return (
     <div className="container">
@@ -85,8 +81,6 @@ const Home: React.FC = () => {
               ))}
         </div>
       )}
-
-      <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
 };

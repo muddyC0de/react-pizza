@@ -5,10 +5,12 @@ import CartItem from "../components/CartItem";
 import { clearItems } from "../redux/slices/cartSlice";
 import CartEmpty from "../components/CartEmpty";
 import { RootState } from "../redux/store";
-
+import PaymentSuccessful from "../components/PaymentSuccesful";
+import { addHistoryItem } from "../redux/slices/historySlice";
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cartSlice.items);
+  const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(false);
   const { totalPrice, items } = useSelector(
     (state: RootState) => state.cartSlice
   );
@@ -18,6 +20,12 @@ const Cart: React.FC = () => {
   );
   const onClickClear = () => {
     dispatch(clearItems());
+  };
+
+  const onClickPayment = () => {
+    setIsPaymentSuccessful(true);
+    dispatch(addHistoryItem(cartItems));
+    onClickClear();
   };
   return (
     <div className="container container--cart">
@@ -160,14 +168,16 @@ const Cart: React.FC = () => {
 
                   <span>Вернуться назад</span>
                 </Link>
-                <div className="button pay-btn">
+                <div onClick={onClickPayment} className="button pay-btn">
                   <span>Оплатить сейчас</span>
                 </div>
               </div>
             </div>
           </>
-        ) : (
+        ) : !isPaymentSuccessful ? (
           <CartEmpty />
+        ) : (
+          <PaymentSuccessful />
         )}
       </div>
     </div>

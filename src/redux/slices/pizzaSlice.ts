@@ -14,7 +14,7 @@ type Pizza = {
   description: string;
 };
 
-enum Status {
+export enum Status {
   LOADING = "loading",
   SUCCESS = "success",
   ERROR = "error",
@@ -33,9 +33,9 @@ const initialState: PizzaSliceState = {
 export const fetchPizzas = createAsyncThunk(
   "pizza/fetchPizzasStatus",
   async (params: Record<string, string>) => {
-    const { sortBy, order, category, search, currentPage } = params;
+    const { sortBy, order, category, search } = params;
     const { data } = await axios.get(
-      `https://65e460ee3070132b3b24a7a1.mockapi.io/items?page=${currentPage}&limit=8&sortBy=${sortBy}${category}&order=${order}${search}`
+      `https://65e460ee3070132b3b24a7a1.mockapi.io/items?sortBy=${sortBy}${category}&order=${order}${search}`
     );
     return data as Pizza[];
   }

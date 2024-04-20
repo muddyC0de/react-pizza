@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../redux/store";
-
+import { useInView } from "react-intersection-observer";
+import ImgSkeleton from "./imgSkeleton";
 type PizzaBlockProps = {
   id: number;
   title: string;
@@ -24,11 +25,17 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
       .reduce((sum: number, obj: { count: number }) => sum + obj.count, 0)
   );
 
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
   return (
-    <div className="pizza-block-wrapper">
+    <div ref={ref} className="pizza-block-wrapper">
       <div className="pizza-block">
         <Link to={`/pizza/${id}`}>
-          <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+          {inView ? (
+            <img className="pizza-block__image" src={imageUrl} alt={title} />
+          ) : (
+            <ImgSkeleton />
+          )}
+
           <h4 className="pizza-block__title">{title}</h4>
         </Link>
         <p className="pizza-block__description">{description}</p>

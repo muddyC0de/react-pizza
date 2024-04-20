@@ -1,0 +1,35 @@
+.popup {
+  position: absolute;
+  right: 5px;
+  margin-top: 15px;
+  background: #ffffff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px 0;
+  width: 229px;
+  top: 90px;
+  z-index: 999;
+  ul {
+    overflow: hidden;
+    li {
+      padding: 12px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      img {
+        height: 20px;
+        margin-right: 3px;
+      }
+      &.active,
+      &:hover {
+        background: rgba(254, 95, 30, 0.05);
+      }
+
+      &.active {
+        font-weight: bold;
+        color: #fe5f1e;
+      }
+    }
+  }
+}

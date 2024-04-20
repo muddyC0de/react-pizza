@@ -3,6 +3,11 @@
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 16px 0;
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 10;
+  backdrop-filter: blur(20px);
 
   .container {
     display: flex;
@@ -16,6 +21,27 @@
         margin-top: 30px;
       }
     }
+  }
+
+  .userImg {
+    margin-left: 17px;
+    height: 35px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+      margin-left: 3px;
+      font-weight: 700;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
   }
 
   &__logo {
