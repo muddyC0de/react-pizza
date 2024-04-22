@@ -11,12 +11,6 @@ const User: React.FC = () => {
             <img src="/img/history.svg" alt="" /> История заказов
           </li>
         </Link>
-        <Link to={"information"}>
-          <li>
-            <img src="/img/profile.svg" alt="" />
-            Информация
-          </li>
-        </Link>
       </ul>
     </div>
   );

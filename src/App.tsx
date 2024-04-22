@@ -5,7 +5,8 @@ import { Route, Routes, Outlet } from "react-router-dom";
 import React from "react";
 import { Loader } from "./components/Loader";
 import History from "./pages/History";
-import Information from "./pages/Information";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 function MainLayout() {
   return (
     <div className="wrapper">
@@ -50,11 +51,20 @@ function App() {
             </React.Suspense>
           }
         />
+
         <Route
-          path="information"
+          path="login"
           element={
             <React.Suspense fallback={<Loader />}>
-              <Information />
+              <Login />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <React.Suspense fallback={<Loader />}>
+              <Register />
             </React.Suspense>
           }
         />

@@ -5,9 +5,17 @@ import pizzaSlice from "./slices/pizzaSlice";
 import fullPizzaSlice from "./slices/fullPizzaSlice";
 import { useDispatch } from "react-redux";
 import historySlice from "./slices/historySlice";
+import userSlice from "./slices/userSlice";
 
 export const store = configureStore({
-  reducer: { filterSlice, cartSlice, pizzaSlice, fullPizzaSlice, historySlice },
+  reducer: {
+    filterSlice,
+    cartSlice,
+    pizzaSlice,
+    fullPizzaSlice,
+    historySlice,
+    userSlice,
+  },
 });
 
 type AppDispatch = typeof store.dispatch;

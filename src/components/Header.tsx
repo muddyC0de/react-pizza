@@ -1,10 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 import { useSelector } from "react-redux";
 import Search from "./Search";
 import { RootState } from "../redux/store";
+import { useAuth } from "../hooks/useAuth";
 import User from "./User";
 const Header: React.FC = () => {
+  const { isAuth, email } = useAuth();
+  const navigate = useNavigate();
   const { totalPrice, items } = useSelector(
     (state: RootState) => state.cartSlice
   );
@@ -13,6 +16,14 @@ const Header: React.FC = () => {
   const location = useLocation();
   const totalCount = items.reduce((sum: number, item) => sum + item.count, 0);
   const isMounted = React.useRef(false);
+
+  const onCLickProfile = () => {
+    if (!isAuth) {
+      navigate("/register");
+    } else {
+      setIsOpen(!isOpen);
+    }
+  };
   React.useEffect(() => {
     if (isMounted.current) {
       const json = JSON.stringify(items);
@@ -90,11 +101,7 @@ const Header: React.FC = () => {
                   <span>{totalCount}</span>
                 </div>
               </Link>
-              <div
-                onClick={() => setIsOpen(!isOpen)}
-                ref={userRef}
-                className="nav"
-              >
+              <div onClick={onCLickProfile} ref={userRef} className="nav">
                 <img className="userImg" src="/img/user.svg" alt="" />
                 <span>Профиль</span>
                 {isOpen ? <User /> : ""}
