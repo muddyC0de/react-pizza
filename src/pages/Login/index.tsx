@@ -34,7 +34,7 @@ const Login = () => {
   };
   return (
     <div className={styles.root}>
-      <div className="content__title">Вход</div>
+      <div className={styles.title}>Вход</div>
       <SignIn handleClick={handleLogin} />
     </div>
   );

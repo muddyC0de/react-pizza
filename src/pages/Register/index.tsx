@@ -24,7 +24,7 @@ const Register = () => {
   };
   return (
     <div className={styles.root}>
-      <div className="content__title">Регистрация</div>
+      <div className={styles.title}>Регистрация</div>
       <SignUp handleClick={handleRegister} />
     </div>
   );

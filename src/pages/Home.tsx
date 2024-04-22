@@ -16,7 +16,6 @@ import { useAppDispatch } from "../redux/store";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { currentCategory, currentSort, currentPage, searchValue } =
     useSelector((state: RootState) => state.filterSlice);
   const { items, status } = useSelector((state: RootState) => state.pizzaSlice);
