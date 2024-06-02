@@ -45,7 +45,8 @@
     "start:dev": "nodemon express.js"
   },
   "engines": {
-    "node": "20.9.0"
+    "node": "20.9.0",
+    "npm": "10.8.1"
   },
   "eslintConfig": {
     "extends": [
