@@ -1,5 +1,5 @@
 # react-pizza
-Link to view: https://react-pizza-753e218d3259.herokuapp.com/
+Link to view: [react-pizza-lemon-omega.vercel.app](https://react-pizza-lemon-omega.vercel.app/)
 
 # Getting Started with Create React App
 
